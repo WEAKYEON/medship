@@ -4,6 +4,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:medship/admin/admin_login.dart';
 import 'package:medship/pages/onboard.dart';
 import 'package:medship/widget/app_constant.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
 
 void main() async {
