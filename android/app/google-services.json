@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "507847211522",
+    "project_id": "medshipapp",
+    "storage_bucket": "medshipapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507847211522:android:59a5600834c352925e851b",
+        "android_client_info": {
+          "package_name": "com.example.medship"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjUirtmt4vu0lSUO8Xig-tgdYHYHB_Zok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
