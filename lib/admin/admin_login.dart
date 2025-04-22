@@ -82,6 +82,7 @@ class _AdminLoginState extends State<AdminLogin> {
                               child: Center(
                                 child: TextFormField(
                                   controller: usernamecontroller,
+                                  // ignore: body_might_complete_normally_nullable
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please Enter Username';
@@ -115,6 +116,7 @@ class _AdminLoginState extends State<AdminLogin> {
                                 child: TextFormField(
                                   obscureText: true,
                                   controller: userpasswordcontroller,
+                                  // ignore: body_might_complete_normally_nullable
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
                                       return 'Please Enter Password';

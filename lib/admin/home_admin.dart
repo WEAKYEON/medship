@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medship/admin/add_hos.dart';
 import 'package:medship/admin/add_med.dart';
+import 'package:medship/admin/del_hos.dart';
+import 'package:medship/admin/del_med.dart';
 import 'package:medship/widget/widget_support.dart';
 
 class HomeAdmin extends StatefulWidget {
@@ -25,8 +27,6 @@ class _HomeAdminState extends State<HomeAdmin> {
               ),
             ),
             SizedBox(height: 50.0),
-
-            /// ปุ่ม Add Food Item
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -36,11 +36,23 @@ class _HomeAdminState extends State<HomeAdmin> {
               },
               child: buildAdminTile(
                 imagePath: "images/pill.png",
-                label: "Add Food Items",
+                label: "Add Medical Items",
               ),
             ),
             SizedBox(height: 20.0),
-
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DeleteMed()),
+                );
+              },
+              child: buildAdminTile(
+                imagePath: "images/pill.png",
+                label: "Delete Medical Items",
+              ),
+            ),
+            SizedBox(height: 20.0),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -51,6 +63,20 @@ class _HomeAdminState extends State<HomeAdmin> {
               child: buildAdminTile(
                 imagePath: "images/hospital.png",
                 label: "Add Hospital",
+              ),
+            ),
+            SizedBox(height: 20.0),
+
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DeleteHos()),
+                );
+              },
+              child: buildAdminTile(
+                imagePath: "images/hospital.png",
+                label: "Delete Hospital",
               ),
             ),
           ],

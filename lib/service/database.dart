@@ -26,6 +26,13 @@ class DatabaseMethods {
         .add(hospitalInfoMap);
   }
 
+  Future<void> deleteHospital(String docId) async {
+    await FirebaseFirestore.instance
+        .collection("Hospitals")
+        .doc(docId)
+        .delete();
+  }
+
   Future addMedtoCart(Map<String, dynamic> userInfoMap, String id) async {
     return await FirebaseFirestore.instance
         .collection("users")

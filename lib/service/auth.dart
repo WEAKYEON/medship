@@ -32,7 +32,7 @@ class AuthMethods {
 
       await user?.delete();
     } catch (e) {
-      print("❌ Error deleting user: $e");
+      print("Error deleting user: $e");
     }
   }
 }

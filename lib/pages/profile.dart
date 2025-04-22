@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:medship/pages/login.dart';
 import 'package:medship/service/auth.dart';
 import 'package:medship/service/shared_pref.dart';
 import 'package:image_picker/image_picker.dart';
@@ -263,21 +264,24 @@ class _ProfileState extends State<Profile> {
                               children: [
                                 Icon(Icons.home, color: Colors.black),
                                 SizedBox(width: 20.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Address",
-                                      style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w600,
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Address",
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      address!,
-                                      style: TextStyle(fontSize: 16.0),
-                                    ),
-                                  ],
+                                      Text(
+                                        address!,
+                                        style: TextStyle(fontSize: 16.0),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -408,6 +412,10 @@ class _ProfileState extends State<Profile> {
                       GestureDetector(
                         onTap: () {
                           AuthMethods().SignOut();
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => LogIn()),
+                          );
                         },
                         child: Container(
                           margin: EdgeInsets.symmetric(horizontal: 20.0),

@@ -14,7 +14,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool lodkai = true, kaepud = false, khachuea = false, sleep = false;
+  bool lodkai = true,
+      lodmuk = false,
+      kaepud = false,
+      kaeai = false,
+      kaepae = false,
+      lodklod = false,
+      birth = false,
+      medkit = false,
+      supfood = false;
   String? name;
   Stream? medItemStream;
 
@@ -27,6 +35,13 @@ class _HomeState extends State<Home> {
     medItemStream = await DatabaseMethods().getMedItem("lodkai");
     await getthesharedpref();
     setState(() {});
+  }
+
+  void resetCategories() {
+    lodkai =
+        lodmuk =
+            kaepud =
+                kaeai = kaepae = lodklod = birth = medkit = supfood = false;
   }
 
   @override
@@ -277,10 +292,8 @@ class _HomeState extends State<Home> {
       children: [
         GestureDetector(
           onTap: () async {
+            resetCategories();
             lodkai = true;
-            kaepud = false;
-            khachuea = false;
-            sleep = false;
             medItemStream = await DatabaseMethods().getMedItem("lodkai");
             setState(() {});
           },
@@ -305,10 +318,34 @@ class _HomeState extends State<Home> {
         ),
         GestureDetector(
           onTap: () async {
-            lodkai = false;
+            resetCategories();
+            lodmuk = true;
+            medItemStream = await DatabaseMethods().getMedItem("lodmuk");
+            setState(() {});
+          },
+          child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: lodmuk ? Colors.blueAccent : Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.asset(
+                "images/lodmuk.png",
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                color: lodmuk ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            resetCategories();
             kaepud = true;
-            khachuea = false;
-            sleep = false;
             medItemStream = await DatabaseMethods().getMedItem("kaepud");
             setState(() {});
           },
@@ -333,11 +370,9 @@ class _HomeState extends State<Home> {
         ),
         GestureDetector(
           onTap: () async {
-            lodkai = false;
-            kaepud = false;
-            khachuea = true;
-            sleep = false;
-            medItemStream = await DatabaseMethods().getMedItem("khachuea");
+            resetCategories();
+            kaeai = true;
+            medItemStream = await DatabaseMethods().getMedItem("kaeai");
             setState(() {});
           },
           child: Material(
@@ -345,27 +380,52 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(10),
             child: Container(
               decoration: BoxDecoration(
-                color: khachuea ? Colors.blueAccent : Colors.white,
+                color: kaeai ? Colors.blueAccent : Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
               padding: EdgeInsets.all(8),
               child: Image.asset(
-                "images/khachuea.png",
+                "images/kaeai.png",
                 height: 50,
                 width: 50,
                 fit: BoxFit.cover,
-                color: khachuea ? Colors.white : Colors.black,
+                color: kaeai ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+        ),
+        // เพิ่มหมวดหมู่ใหม่ที่นี่
+        GestureDetector(
+          onTap: () async {
+            resetCategories();
+            kaepae = true;
+            medItemStream = await DatabaseMethods().getMedItem("kaepae");
+            setState(() {});
+          },
+          child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: kaepae ? Colors.blueAccent : Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.asset(
+                "images/kaepae.png", // ใช้ไอคอนที่เกี่ยวข้อง
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                color: kaepae ? Colors.white : Colors.black,
               ),
             ),
           ),
         ),
         GestureDetector(
           onTap: () async {
-            lodkai = false;
-            kaepud = false;
-            khachuea = false;
-            sleep = true;
-            medItemStream = await DatabaseMethods().getMedItem("sleep");
+            resetCategories();
+            lodklod = true;
+            medItemStream = await DatabaseMethods().getMedItem("lodklod");
             setState(() {});
           },
           child: Material(
@@ -373,16 +433,94 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(10),
             child: Container(
               decoration: BoxDecoration(
-                color: sleep ? Colors.blueAccent : Colors.white,
+                color: lodklod ? Colors.blueAccent : Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
               padding: EdgeInsets.all(8),
               child: Image.asset(
-                "images/sleep.png",
+                "images/lodklod.png", // ใช้ไอคอนที่เกี่ยวข้อง
                 height: 50,
                 width: 50,
                 fit: BoxFit.cover,
-                color: sleep ? Colors.white : Colors.black,
+                color: lodklod ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            resetCategories();
+            birth = true;
+            medItemStream = await DatabaseMethods().getMedItem("birth");
+            setState(() {});
+          },
+          child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: birth ? Colors.blueAccent : Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.asset(
+                "images/birth.png", // ใช้ไอคอนที่เกี่ยวข้อง
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                color: birth ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            resetCategories();
+            medkit = true;
+            medItemStream = await DatabaseMethods().getMedItem("medkit");
+            setState(() {});
+          },
+          child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: medkit ? Colors.blueAccent : Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.asset(
+                "images/medkit.png", // ใช้ไอคอนที่เกี่ยวข้อง
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                color: medkit ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
+        ),
+        GestureDetector(
+          onTap: () async {
+            resetCategories();
+            supfood = true;
+            medItemStream = await DatabaseMethods().getMedItem("supfood");
+            setState(() {});
+          },
+          child: Material(
+            elevation: 5.0,
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              decoration: BoxDecoration(
+                color: supfood ? Colors.blueAccent : Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Image.asset(
+                "images/supfood.png", // ใช้ไอคอนที่เกี่ยวข้อง
+                height: 50,
+                width: 50,
+                fit: BoxFit.cover,
+                color: supfood ? Colors.white : Colors.black,
               ),
             ),
           ),

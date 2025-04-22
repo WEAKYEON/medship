@@ -15,11 +15,22 @@ class AddMed extends StatefulWidget {
 }
 
 class _AddMedState extends State<AddMed> {
-  final List<String> meditems = ['lodkai', 'kaepud', 'khachuea', 'sleep'];
+  final List<String> meditems = [
+    'lodkai',
+    'lodmuk',
+    'kaepud',
+    'kaeai',
+    'kaepae',
+    'lodklod',
+    'birth',
+    'medkit',
+    'supfood',
+  ];
   String? value;
   TextEditingController namecontroller = new TextEditingController();
   TextEditingController pricecontroller = new TextEditingController();
   TextEditingController detailcontroller = new TextEditingController();
+  TextEditingController shortDetailController = TextEditingController();
   final ImagePicker _picker = ImagePicker();
   File? selectedImage;
 
@@ -34,7 +45,8 @@ class _AddMedState extends State<AddMed> {
     if (selectedImage != null &&
         namecontroller.text != "" &&
         pricecontroller.text != "" &&
-        detailcontroller.text != "") {
+        detailcontroller.text != "" &&
+        shortDetailController.text != "") {
       String addId = randomAlphaNumeric(10);
 
       Reference firebaseStorageRef = FirebaseStorage.instance
@@ -49,8 +61,10 @@ class _AddMedState extends State<AddMed> {
         "Image": downloadUrl,
         "Name": namecontroller.text,
         "Price": pricecontroller.text,
+        "ShortDetail": shortDetailController.text,
         "Detail": detailcontroller.text,
       };
+
       await DatabaseMethods().addMedItem(addItem, value!).then((value) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -199,6 +213,25 @@ class _AddMedState extends State<AddMed> {
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: "Enter Item Detail",
+                    hintStyle: AppWidget.LightTextFieldStyle(),
+                  ),
+                ),
+              ),
+              SizedBox(height: 30.0),
+              Text("Short Detail", style: AppWidget.semiBoldTextFieldStyle()),
+              SizedBox(height: 10.0),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Color(0xFFececf8),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextField(
+                  controller: shortDetailController,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Enter Short Detail",
                     hintStyle: AppWidget.LightTextFieldStyle(),
                   ),
                 ),

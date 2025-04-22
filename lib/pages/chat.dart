@@ -6,7 +6,7 @@ import 'package:medship/widget/widget_support.dart';
 
 class ChatPage extends StatefulWidget {
   final String chatRoomId;
-  final String recipientName; // ชื่อปลายทาง เช่น โรงพยาบาล
+  final String recipientName;
 
   const ChatPage({
     super.key,
