@@ -7,6 +7,10 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
+dependencies {
+    implementation ("com.google.firebase:firebase-appcheck:17.0.1")
+    implementation ("com.google.firebase:firebase-appcheck-debug:17.0.1")
+}
 
 android {
     namespace = "com.example.medship"
