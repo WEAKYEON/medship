@@ -174,9 +174,9 @@ class _LogInState extends State<LogIn> {
                                     setState(() {
                                       email = useremailController.text;
                                       password = userpasswordController.text;
+                                      userLogin();
                                     });
                                   }
-                                  userLogin();
                                 },
                                 child: Material(
                                   elevation: 5.0,
